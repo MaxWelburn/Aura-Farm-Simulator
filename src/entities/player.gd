@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @export var default_turn_speed: float = 2.0
 @export var default_deceleration: float = 2.0
 @export var default_acceleration: float = 5.0
-@export var camera_speed: float = 100.0
+@export var camera_speed: float = 2.0
 @export var magnitude_threshold: float = 100.0
 @export var max_camera_offset: float = 200.0
 @export var camera: Camera2D
@@ -61,6 +61,7 @@ func _move_to_target(delta: float) -> void:
 func _update_camera(delta) -> void:
 	if _camera_target:
 		var goal_offset = Vector2.ZERO
+		# Make the camera look ahead when the player's speed is greater than a certain threshold
 		if _camera_target.velocity.length() >= magnitude_threshold:
 			goal_offset = _camera_target.velocity.normalized() * max_camera_offset
 		_camera_offset = lerp(_camera_offset, goal_offset, camera_speed * delta)

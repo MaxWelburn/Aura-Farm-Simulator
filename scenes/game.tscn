@@ -13,8 +13,12 @@ script = ExtResource("2_lnu2h")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_lbhrr")]
 scale = Vector2(0.25, 0.25)
-default_max_speed = 2000.0
-camera_speed = 50.0
+default_move_dist = 100.0
+default_max_speed = 1000.0
+default_deceleration = 0.5
+camera_speed = 1.0
+magnitude_threshold = 80.0
+max_camera_offset = 200.0
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]

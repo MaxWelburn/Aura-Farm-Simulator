@@ -7,6 +7,12 @@
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ucweq")
+default_move_dist = 0.0
+overshoot = 500.0
+default_max_speed = 2000.0
+default_acceleration = 20.0
+magnitude_threshold = 500.0
+max_camera_offset = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0qees")
