@@ -5,6 +5,10 @@ class_name Player extends CharacterBody2D
 @export var default_turn_speed: float = 2.0
 @export var default_deceleration: float = 2.0
 @export var default_acceleration: float = 5.0
+@export var camera_speed: float = 100.0
+@export var magnitude_threshold: float = 100.0
+@export var max_camera_offset: float = 200.0
+@export var camera: Camera2D
 
 @onready var _move_dist: float = default_move_dist
 @onready var _max_speed: float = default_max_speed
@@ -14,12 +18,19 @@ class_name Player extends CharacterBody2D
 
 var _target_position: Vector2
 var _look_target: Vector2
+var _camera_target: CharacterBody2D
+var _camera_offset: Vector2
+
+
+func _process(delta: float) -> void:
+	_update_camera(delta)
 
 
 func _physics_process(delta: float) -> void:
 	var mouse_position = get_global_mouse_position()
 	_target_position = mouse_position
 	_look_target = mouse_position
+	_camera_target = self
 	_look_at_target(delta)
 	_move_to_target(delta)
 	move_and_slide()
@@ -45,3 +56,12 @@ func _move_to_target(delta: float) -> void:
 		velocity = transform.x * lerp(0.0, _max_speed, _acceleration * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, _deceleration * delta)
+
+
+func _update_camera(delta) -> void:
+	if _camera_target:
+		var goal_offset = Vector2.ZERO
+		if _camera_target.velocity.length() >= magnitude_threshold:
+			goal_offset = _camera_target.velocity.normalized() * max_camera_offset
+		_camera_offset = lerp(_camera_offset, goal_offset, camera_speed * delta)
+		camera.position = lerp(camera.position, _camera_target.position + _camera_offset, camera_speed * delta)
