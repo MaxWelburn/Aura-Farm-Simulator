@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dw8w2qop0d3xi"]
+
+[ext_resource type="Shader" uid="uid://cw1nw07d62xml" path="res://ColorScaling.gdshader" id="1_nqaye"]
+
+[resource]
+shader = ExtResource("1_nqaye")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
