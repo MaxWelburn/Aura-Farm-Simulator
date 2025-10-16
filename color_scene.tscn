@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3uqox4i20336"]
+[gd_scene load_steps=6 format=3 uid="uid://b3uqox4i20336"]
 
+[ext_resource type="Texture2D" uid="uid://ndkkf25hp1t8" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="1_whwku"]
 [ext_resource type="Texture2D" uid="uid://dd6rm44j60ie3" path="res://icon.svg" id="2_7brw5"]
 [ext_resource type="Material" uid="uid://dymy3csax5swu" path="res://GreyscaleColorFilter.tres" id="2_jt0ih"]
 [ext_resource type="Texture2D" uid="uid://nlpy5ui4e1hw" path="res://Art/light.png" id="3_7brw5"]
@@ -12,16 +13,19 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0.7201309, 0.37433428, 1)
 
+[node name="15507193FlowerFieldShotFromAbove" type="Sprite2D" parent="."]
+scale = Vector2(1.477, 1.477)
+texture = ExtResource("1_whwku")
+centered = false
+region_rect = Rect2(0, 0, 1920, 1080)
+region_filter_clip_enabled = true
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(71, 69)
+position = Vector2(392, 145)
 texture = ExtResource("2_7brw5")
 
 [node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(1176, 720)
-texture = ExtResource("2_7brw5")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(1352, 546)
+position = Vector2(40, 1045)
 texture = ExtResource("2_7brw5")
 
 [node name="Icon5" type="Sprite2D" parent="."]
@@ -40,11 +44,13 @@ position = Vector2(414, 178)
 texture = ExtResource("3_7brw5")
 
 [node name="ColorSource2" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("3_whwku")
 position = Vector2(1509, 339)
 texture = ExtResource("3_7brw5")
 
 [node name="ColorSource3" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("3_whwku")
 position = Vector2(116, 1039)
 texture = ExtResource("3_7brw5")
