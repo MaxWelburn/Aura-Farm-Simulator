@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb6kwesuaimep"]
+
+[ext_resource type="Texture2D" uid="uid://dbkc0bfecuwtt" path="res://assets/Crystal.png" id="1_3ycm8"]
+
+[sub_resource type="GDScript" id="GDScript_3ycm8"]
+script/source = "extends Sprite2D
+
+@export var color: Color = Color(255, 255, 255) # red tint by default
+
+func _ready() -> void:
+	modulate = color
+"
+
+[node name="Crystal" type="CharacterBody2D" groups=["Crystal"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Crystal"]]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_3ycm8")
+script = SubResource("GDScript_3ycm8")
+color = Color(1, 1, 1, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -108, 19, -89, 26, -48, 42, -39, 60, 8, 30, 85, 6, 110, -30, 77, -60, -3, -45, -63)
