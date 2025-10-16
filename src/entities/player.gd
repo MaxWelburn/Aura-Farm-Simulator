@@ -33,22 +33,7 @@ func _physics_process(delta: float) -> void:
 	_look_at_target(delta)
 	_move_to_target(delta)
 	move_and_slide()
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		var collider = collision.get_collider()
-		if collider is CharacterBody2D:
-			var player_sprite = $Sprite2D
-			if collider.name.find("Orb") != -1:
-				var orb_sprite = collider.get_node("Sprite2D")
-				if orb_sprite and player_sprite:
-					player_sprite.modulate = orb_sprite.modulate
-					print("Changed player color to:", orb_sprite.modulate)
-				collider.queue_free()
-			elif collider.name.find("Crystal") != -1 and player_sprite.modulate != Color(1, 1, 1):
-				var crystal_sprite = collider.get_node("Sprite2D")
-				if crystal_sprite and player_sprite:
-					crystal_sprite.modulate = player_sprite.modulate
-					player_sprite.modulate = Color(1, 1, 1)
+	
 
 func _look_at_target(delta: float) -> void:
 	var target_vec := _look_target - position
@@ -77,3 +62,20 @@ func _update_camera(delta) -> void:
 			goal_offset = _camera_target.velocity.normalized() * max_camera_offset
 		_camera_offset = lerp(_camera_offset, goal_offset, camera_speed * delta)
 		camera.position = lerp(camera.position, _camera_target.position + _camera_offset, camera_speed * delta)
+
+
+func _on_detection_area_area_entered(area: Area2D) -> void:
+	var player_sprite = $Sprite2D
+	var detected_object = area
+	print("detected object: ", detected_object)
+	if detected_object.is_in_group("Orbs"):
+		var orb_sprite = detected_object.get_node("Sprite2D")
+		if orb_sprite and player_sprite:
+			player_sprite.modulate = orb_sprite.modulate
+			print("Changed player color to:", orb_sprite.modulate)
+		detected_object.queue_free()
+	elif detected_object.is_in_group("Crystal") and player_sprite.modulate != Color(1, 1, 1):
+		var crystal_sprite = detected_object.get_node("Sprite2D")
+		if crystal_sprite and player_sprite:
+			crystal_sprite.modulate = player_sprite.modulate
+			player_sprite.modulate = Color(1, 1, 1)

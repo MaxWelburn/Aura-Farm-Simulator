@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb6kwesuaimep"]
+[gd_scene load_steps=4 format=3 uid="uid://bb6kwesuaimep"]
 
 [ext_resource type="Texture2D" uid="uid://dbkc0bfecuwtt" path="res://assets/Crystal.png" id="1_3ycm8"]
 
@@ -11,7 +11,13 @@ func _ready() -> void:
 	modulate = color
 "
 
-[node name="Crystal" type="CharacterBody2D" groups=["Crystal"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ycm8"]
+radius = 75.0
+height = 250.0
+
+[node name="Crystal" type="Area2D" groups=["Crystal"]]
+collision_mask = 0
+monitoring = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Crystal"]]
 scale = Vector2(0.4, 0.4)
@@ -19,5 +25,5 @@ texture = ExtResource("1_3ycm8")
 script = SubResource("GDScript_3ycm8")
 color = Color(1, 1, 1, 1)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-2, -108, 19, -89, 26, -48, 42, -39, 60, 8, 30, 85, 6, 110, -30, 77, -60, -3, -45, -63)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3ycm8")

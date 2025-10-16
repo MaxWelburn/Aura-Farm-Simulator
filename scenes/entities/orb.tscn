@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_sepdv"]
 radius = 24.186773
 
-[node name="Orb" type="CharacterBody2D" groups=["Orbs"]]
-motion_mode = 1
+[node name="Orb" type="Area2D" groups=["Orbs"]]
+collision_mask = 0
+monitoring = false
 script = ExtResource("1_yu4ry")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Orbs"]]
