@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkqh3nn33r0sh"]
+[gd_scene load_steps=7 format=3 uid="uid://dkqh3nn33r0sh"]
 
 [ext_resource type="Script" uid="uid://d1xergo2gfk6j" path="res://src/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csbta1brs4t15" path="res://scenes/environment/world.tscn" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://daiqv4iuyfbtb" path="res://src/entities/orb.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cx0b6y8nw56it" path="res://scenes/entities/player.tscn" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://d33d1dmtw0t7l" path="res://src/entities/spawner.gd" id="5_iywne"]
+[ext_resource type="Script" uid="uid://d33d1dmtw0t7l" path="res://scenes/spawner.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://d4lm2a4yy6nx4" path="res://scenes/entities/orb.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://bb6kwesuaimep" path="res://scenes/entities/crystal.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -17,29 +16,22 @@ script = ExtResource("2_lnu2h")
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_lbhrr")]
 scale = Vector2(0.25, 0.25)
 default_move_dist = 100.0
-magnitude_threshold = 100.0
+default_max_speed = 1000.0
+default_deceleration = 0.5
+camera_speed = 1.0
+magnitude_threshold = 80.0
 max_camera_offset = 200.0
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 
-[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("5_iywne")
 orb_scene = ExtResource("6_p57ef")
 player = NodePath("../Player")
-max_orbs = 75
-min_orb_separation = 200.0
-spawn_radius = 2500.0
-max_spawn_attempts = 15
-
-[node name="Crystal" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(-308, -309)
-
-[node name="Crystal2" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(361, -219)
-
-[node name="Crystal3" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(-336, 161)
-
-[node name="Crystal4" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(393, 162)
+camera = NodePath("../Camera")
+min_player_distance = 100.0
+max_player_distance = 1000.0
+min_orb_separation = 100.0
+spawn_interval = 0.01
+max_spawn_attempts = 5

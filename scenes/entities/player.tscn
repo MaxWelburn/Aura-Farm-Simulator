@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://cychuborvs8yp" path="res://assets/placeholder-circle.png" id="2_08t41"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qees"]
+radius = 98.12747
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ucweq")
 default_move_dist = 0.0
-overshoot = 500.0
 default_max_speed = 2000.0
 default_acceleration = 20.0
 magnitude_threshold = 500.0
 max_camera_offset = 300.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0qees")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 texture = ExtResource("2_08t41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+shape = SubResource("CircleShape2D_0qees")
