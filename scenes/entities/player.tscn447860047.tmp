@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx0b6y8nw56it"]
+
+[ext_resource type="Script" uid="uid://cik2b88nl48x3" path="res://src/entities/player.gd" id="1_ucweq"]
+[ext_resource type="Texture2D" uid="uid://cychuborvs8yp" path="res://assets/placeholder-circle.png" id="2_08t41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qees"]
+radius = 98.12747
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08t41"]
+radius = 150.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_ucweq")
+default_move_dist = 0.0
+default_max_speed = 2000.0
+default_acceleration = 20.0
+magnitude_threshold = 500.0
+max_camera_offset = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
+texture = ExtResource("2_08t41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+shape = SubResource("CircleShape2D_0qees")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_08t41")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]

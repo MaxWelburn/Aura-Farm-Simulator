@@ -69,13 +69,21 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 	var detected_object = area
 	print("detected object: ", detected_object)
 	if detected_object.is_in_group("Orbs"):
-		var orb_sprite = detected_object.get_node("Sprite2D")
+		var orb: Orb = detected_object
+		var orb_sprite = orb.get_node("Sprite2D")
 		if orb_sprite and player_sprite:
 			player_sprite.modulate = orb_sprite.modulate
 			print("Changed player color to:", orb_sprite.modulate)
-		detected_object.queue_free()
+		orb.queue_free()
 	elif detected_object.is_in_group("Crystal") and player_sprite.modulate != Color(1, 1, 1):
-		var crystal_sprite = detected_object.get_node("Sprite2D")
+		var crystal: Crystal = detected_object
+		var crystal_sprite = crystal.get_node("Sprite2D")
 		if crystal_sprite and player_sprite:
 			crystal_sprite.modulate = player_sprite.modulate
 			player_sprite.modulate = Color(1, 1, 1)
+			crystal.connected_color_source.show()
+			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
+			if !crystal.filled: 
+				GameManager.fill_crystal()
+				crystal.filled = true
+			

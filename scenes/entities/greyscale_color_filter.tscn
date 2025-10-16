@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ijr8orr02vw"]
+
+[ext_resource type="Material" uid="uid://dymy3csax5swu" path="res://Art/Shaders & Materials/GreyscaleColorFilter.tres" id="1_14j6l"]
+[ext_resource type="Script" uid="uid://d1capoem5gbh2" path="res://src/entities/greyscale_color_filter.gd" id="2_nejdc"]
+
+[node name="GreyscaleColorFilter" type="ColorRect"]
+material = ExtResource("1_14j6l")
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.7201309, 0.37433428, 1)
+script = ExtResource("2_nejdc")
