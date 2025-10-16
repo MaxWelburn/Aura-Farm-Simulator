@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://ndkkf25hp1t8" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="1_whwku"]
 [ext_resource type="Texture2D" uid="uid://dd6rm44j60ie3" path="res://icon.svg" id="2_7brw5"]
-[ext_resource type="Material" uid="uid://dymy3csax5swu" path="res://GreyscaleColorFilter.tres" id="2_jt0ih"]
+[ext_resource type="Material" uid="uid://dymy3csax5swu" path="res://Art/Shaders & Materials/GreyscaleColorFilter.tres" id="2_jt0ih"]
 [ext_resource type="Texture2D" uid="uid://nlpy5ui4e1hw" path="res://Art/light.png" id="3_7brw5"]
-[ext_resource type="Material" uid="uid://dw8w2qop0d3xi" path="res://RecolorFilter.tres" id="3_whwku"]
+[ext_resource type="Material" uid="uid://dw8w2qop0d3xi" path="res://Art/Shaders & Materials/RecolorFilter.tres" id="3_whwku"]
 
 [node name="ColorScene" type="Node2D"]
 
