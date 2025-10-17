@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dymy3csax5swu"]
+
+[ext_resource type="Shader" uid="uid://cw1nw07d62xml" path="res://Art/Shaders & Materials/ColorScaling.gdshader" id="1_nmta5"]
+
+[resource]
+shader = ExtResource("1_nmta5")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.0
