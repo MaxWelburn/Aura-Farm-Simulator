@@ -21,10 +21,11 @@ var _target_position: Vector2
 var _look_target: Vector2
 var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
-var _move_t: float = 0.0
+
 
 func _process(delta: float) -> void:
 	_update_camera(delta)
+
 
 func _physics_process(delta: float) -> void:
 	var mouse_position = get_global_mouse_position()
@@ -49,12 +50,14 @@ func _look_at_target(delta: float) -> void:
 	)
 	rotation = target_rotation
 
+
 func _move_to_target(delta: float) -> void:
 	var dist_to_target := position.distance_to(_target_position)
 	if dist_to_target > _move_dist:
 		velocity = lerp(velocity, transform.x * _max_speed, _acceleration * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, _deceleration * delta)
+
 
 func _update_camera(delta) -> void:
 	if _camera_target:
@@ -83,4 +86,3 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 			if !crystal.filled: 
 				GameManager.fill_crystal()
 				crystal.filled = true
-			
