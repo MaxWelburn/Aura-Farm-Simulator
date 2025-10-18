@@ -21,6 +21,7 @@ var _target_position: Vector2
 var _look_target: Vector2
 var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
+var _move_t: float = 0.0
 
 func _process(delta: float) -> void:
 	_update_camera(delta)
