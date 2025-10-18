@@ -1,8 +1,8 @@
 class_name Orb extends Node2D
 
-@export var _move_speed: float = 5.0
-@export var _color_change_speed: float = 10.0
-@export var _scale_change_speed: float = 1.0
+@export var move_speed: float = 5.0
+@export var color_change_speed: float = 5.0
+@export var scale_change_speed: float = 0.5
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -29,8 +29,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if _getting_absorbed && _color_change_t < 1:
-		_color_change_t += _color_change_speed * delta
-		_scale_change_t += _scale_change_speed * delta
+		_color_change_t += color_change_speed * delta
+		_scale_change_t += scale_change_speed * delta
 		_player_sprite.modulate = lerp(_player_start_color, _player_goal_color, _color_change_t)
 		sprite.scale = lerp(sprite.scale, Vector2.ZERO, _scale_change_t)
 		_player_sprite.scale = lerp(_player_sprite.scale, _player_sprite.scale * 1.1, _scale_change_t)
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _getting_absorbed && _position_change_t < 1:
 		_goal_pos = _player.position
-		_position_change_t = _move_speed * delta
+		_position_change_t = move_speed * delta
 		position = lerp(position, _goal_pos, _position_change_t)
 		 
 
