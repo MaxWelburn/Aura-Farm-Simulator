@@ -15,6 +15,7 @@ var _player: CharacterBody2D
 var _player_sprite: Sprite2D
 var _player_start_color: Color
 var _player_goal_color: Color
+var _player_start_size: Vector2
 
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 		_scale_change_t += _scale_change_speed * delta
 		_player_sprite.modulate = lerp(_player_start_color, _player_goal_color, _color_change_t)
 		sprite.scale = lerp(sprite.scale, Vector2.ZERO, _scale_change_t)
+		_player_sprite.scale = lerp(_player_sprite.scale, _player_sprite.scale * 1.1, _scale_change_t)
 	elif _color_change_t >= 1:
 		absorbed() # I have been aborbed
 
@@ -46,12 +48,14 @@ func _physics_process(delta: float) -> void:
 func start_absorbtion(player: CharacterBody2D) -> void:
 	_player = player
 	_player_sprite = player.get_node("Sprite2D")
-	_player_start_color = Color(_player_sprite.modulate)
-	_player_goal_color = Color(sprite.modulate)
+	_player_start_color = _player_sprite.modulate
+	_player_goal_color = sprite.modulate
+	_player_start_size = _player.scale
 	_getting_absorbed = true
 
 
 func absorbed() -> void:
 	_getting_absorbed = false
 	_player_sprite.modulate = _player_goal_color
+	_player_sprite.global_scale = _player_start_size
 	self.queue_free() 
