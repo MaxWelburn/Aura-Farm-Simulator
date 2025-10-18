@@ -51,7 +51,7 @@ func _look_at_target(delta: float) -> void:
 func _move_to_target(delta: float) -> void:
 	var dist_to_target := position.distance_to(_target_position)
 	if dist_to_target > _move_dist:
-		velocity = transform.x * lerp(0.0, _max_speed, _acceleration * delta)
+		velocity = lerp(velocity, transform.x * _max_speed, _acceleration * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, _deceleration * delta)
 
@@ -70,11 +70,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 	print("detected object: ", detected_object)
 	if detected_object.is_in_group("Orbs"):
 		var orb: Orb = detected_object
-		var orb_sprite = orb.get_node("Sprite2D")
-		if orb_sprite and player_sprite:
-			player_sprite.modulate = orb_sprite.modulate
-			print("Changed player color to:", orb_sprite.modulate)
-		orb.queue_free()
+		orb.start_absorbtion(self)
 	elif detected_object.is_in_group("Crystal") and player_sprite.modulate != Color(1, 1, 1):
 		var crystal: Crystal = detected_object
 		var crystal_sprite = crystal.get_node("Sprite2D")
