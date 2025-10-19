@@ -24,6 +24,12 @@ var _camera_offset: Vector2
  
 @onready var req1 = %Req1
 @onready var req2 = %Req2
+@onready var req1_2 = %Req1_2
+@onready var req2_2 = %Req2_2
+@onready var req1_3 = %Req1_3
+@onready var req2_3 = %Req2_3
+@onready var req1_4 = %Req1_4
+@onready var req2_4 = %Req2_4
 
 func _process(delta: float) -> void:
 	_update_camera(delta)
@@ -92,9 +98,24 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		var req2_sprite = req2.get_node("Sprite2D")
 		var c1req2 = req2_sprite.modulate
 		print(c1req2)
+		var req12_sprite = req1_2.get_node("Sprite2D")
+		var c2req1 = req12_sprite.modulate
+		var req22_sprite = req2_2.get_node("Sprite2D")
+		var c2req2 = req22_sprite.modulate
+		var req13_sprite = req1_3.get_node("Sprite2D")
+		var c3req1 = req13_sprite.modulate
+		var req23_sprite = req2_3.get_node("Sprite2D")
+		var c3req2 = req23_sprite.modulate
+		var req14_sprite = req1_4.get_node("Sprite2D")
+		var c4req1 = req14_sprite.modulate
+		var req24_sprite = req2_4.get_node("Sprite2D")
+		var c4req2 = req24_sprite.modulate
+		print(c1req2)
 		var crystal: Crystal = detected_object
+		var crystal_name = detected_object.name
+		print(crystal_name)
 		var crystal_sprite = crystal.get_node("Sprite2D")
-		if crystal_sprite and player_sprite and (are_colors_similar(player_sprite.modulate, c1req1) or are_colors_similar(player_sprite.modulate, c1req2)):
+		if crystal_sprite and player_sprite and (crystal_name == "Crystal") and (are_colors_similar(player_sprite.modulate, c1req1) or are_colors_similar(player_sprite.modulate, c1req2)):
 			print("Color allowed:", player_sprite.modulate)
 			crystal_sprite.modulate = player_sprite.modulate
 			player_sprite.modulate = Color(1, 1, 1)
@@ -103,4 +124,30 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 			if !crystal.filled: 
 				GameManager.fill_crystal()
 				crystal.filled = true
-			
+		elif crystal_sprite and player_sprite and (crystal_name == "Crystal2") and (are_colors_similar(player_sprite.modulate, c2req1) or are_colors_similar(player_sprite.modulate, c2req2)):
+			print("Color allowed:", player_sprite.modulate)
+			crystal_sprite.modulate = player_sprite.modulate
+			player_sprite.modulate = Color(1, 1, 1)
+			crystal.connected_color_source.show()
+			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
+			if !crystal.filled: 
+				GameManager.fill_crystal()
+				crystal.filled = true
+		elif crystal_sprite and player_sprite and (crystal_name == "Crystal3") and (are_colors_similar(player_sprite.modulate, c3req1) or are_colors_similar(player_sprite.modulate, c3req2)):
+			print("Color allowed:", player_sprite.modulate)
+			crystal_sprite.modulate = player_sprite.modulate
+			player_sprite.modulate = Color(1, 1, 1)
+			crystal.connected_color_source.show()
+			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
+			if !crystal.filled: 
+				GameManager.fill_crystal()
+				crystal.filled = true
+		elif crystal_sprite and player_sprite and (crystal_name == "Crystal4") and (are_colors_similar(player_sprite.modulate, c4req1) or are_colors_similar(player_sprite.modulate, c4req2)):
+			print("Color allowed:", player_sprite.modulate)
+			crystal_sprite.modulate = player_sprite.modulate
+			player_sprite.modulate = Color(1, 1, 1)
+			crystal.connected_color_source.show()
+			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
+			if !crystal.filled: 
+				GameManager.fill_crystal()
+				crystal.filled = true
