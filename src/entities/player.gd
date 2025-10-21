@@ -74,14 +74,20 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		var crystal_sprite = crystal.get_node("Sprite2D")
 		if crystal_sprite and player_sprite and crystal.color_allowed(player_sprite.modulate):
 			print("Color allowed:", player_sprite.modulate)
-			crystal_sprite.modulate = player_sprite.modulate
+			var color_tween = create_tween()
+			if (crystal_sprite.modulate == Color(1, 1, 1)):
+				color_tween.tween_property(crystal_sprite, "modulate", player_sprite.modulate, 0.5)
+			else:
+				var colormixed = Color.from_ok_hsl(lerp(player_sprite.modulate.ok_hsl_h, crystal_sprite.modulate.ok_hsl_h, 0.5), crystal_sprite.modulate.ok_hsl_s, crystal_sprite.modulate.ok_hsl_l)
+				color_tween.tween_property(crystal_sprite, "modulate", colormixed, 0.5)
 			player_sprite.modulate = Color(1, 1, 1)
 			if crystal.full():
-				crystal.connected_color_source.show()
-			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
-			if !crystal.filled: 
 				GameManager.fill_crystal()
-				crystal.filled = true
+				crystal.connected_color_source.show()
+				var expansion_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
+				expansion_tween.tween_property(crystal.connected_color_source, "scale", Vector2.ONE * 10.0, 2.0)
+			
+			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
 		var crystals = get_parent().get_node("Crystals")
 		var done = true
 		for child in crystals.get_children():
@@ -89,6 +95,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 				if !child.full():
 					done = false
 		if done == true:
+			await get_tree().create_timer(1.25).timeout
 			game_over()
 
 

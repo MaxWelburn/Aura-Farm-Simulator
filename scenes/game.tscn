@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1xergo2gfk6j" path="res://src/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csbta1brs4t15" path="res://scenes/environment/world.tscn" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ndkkf25hp1t8" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="2_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://7q51iltheikm" path="res://assets/flowers.jpg" id="2_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b0yinuvhlihpv" path="res://Art/codioful-formerly-gradienta-LeG68PrXA6Y-unsplash.jpg" id="2_kvuet"]
 [ext_resource type="Script" uid="uid://daiqv4iuyfbtb" path="res://src/entities/orb.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d3ijr8orr02vw" path="res://scenes/entities/greyscale_color_filter.tscn" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b72855wnkr4bs" path="res://scenes/entities/color_source.tscn" id="4_kvpfn"]
@@ -94,7 +94,6 @@ expand_margin_bottom = 21.0
 script = ExtResource("1_uwrxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
 texture = ExtResource("2_kvuet")
 
 [node name="World" parent="." instance=ExtResource("1_yqjtg")]
