@@ -50,12 +50,11 @@ func start_absorbtion(player: CharacterBody2D) -> void:
 	_player_sprite = player.get_node("Sprite2D")
 	_player_start_color = _player_sprite.modulate
 	_player_goal_color = sprite.modulate
-	_player_start_size = _player.scale
+	_player_start_size = _player_sprite.scale
 	_getting_absorbed = true
-
 
 func absorbed() -> void:
 	_getting_absorbed = false
 	_player_sprite.modulate = _player_goal_color
-	_player_sprite.global_scale = _player_start_size
+	_player_sprite.scale = _player_start_size
 	self.queue_free() 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx0b6y8nw56it"]
 
 [ext_resource type="Script" uid="uid://cik2b88nl48x3" path="res://src/entities/player.gd" id="1_ucweq"]
-[ext_resource type="Texture2D" uid="uid://cychuborvs8yp" path="res://assets/placeholder-circle.png" id="2_08t41"]
+[ext_resource type="Texture2D" uid="uid://dsrh7i3ik5nf4" path="res://Art/65328ebf6a851dfeac8bc964_blurred-circle-tiny.png" id="2_08t41"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qees"]
 radius = 98.12747
@@ -11,11 +11,10 @@ radius = 355.45605
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ucweq")
-default_deceleration = 1.0
-default_acceleration = 4.0
 max_camera_offset = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("2_08t41")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
