@@ -59,3 +59,8 @@ func absorbed() -> void:
 	_player_sprite.modulate = _player_goal_color
 	_player_sprite.global_scale = _player_start_size
 	self.queue_free() 
+
+
+func color_value() : 
+	print(sprite.modulate)
+	return sprite.modulate

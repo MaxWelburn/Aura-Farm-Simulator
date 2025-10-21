@@ -15,6 +15,15 @@ var _target_position: Vector2
 var _look_target: Vector2
 var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
+ 
+@onready var req1 = %Req1
+@onready var req2 = %Req2
+@onready var req1_2 = %Req1_2
+@onready var req2_2 = %Req2_2
+@onready var req1_3 = %Req1_3
+@onready var req2_3 = %Req2_3
+@onready var req1_4 = %Req1_4
+@onready var req2_4 = %Req2_4
 
 
 func _process(delta: float) -> void:
@@ -61,6 +70,13 @@ func _update_camera(delta) -> void:
 		_camera_offset = lerp(_camera_offset, goal_offset, camera_speed * delta)
 		camera.position = lerp(camera.position, _camera_target.position + _camera_offset, camera_speed * delta)
 
+# edit threshold -> higher, more tolerant of diff colors, lower less tolerant
+func are_colors_similar(color1: Color, color2: Color, threshold := 0.3) -> bool:
+	var dr = color1.r - color2.r
+	var dg = color1.g - color2.g
+	var db = color1.b - color2.b
+	var distance = sqrt(dr * dr + dg * dg + db * db)
+	return distance < threshold
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	var player_sprite = $Sprite2D
@@ -71,11 +87,15 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		orb.start_absorbtion(self)
 	elif detected_object.is_in_group("Crystal") and player_sprite.modulate != Color(1, 1, 1):
 		var crystal: Crystal = detected_object
+		var crystal_name = detected_object.name
+		print(crystal_name)
 		var crystal_sprite = crystal.get_node("Sprite2D")
-		if crystal_sprite and player_sprite:
+		if crystal_sprite and player_sprite and crystal.color_allowed(player_sprite.modulate):
+			print("Color allowed:", player_sprite.modulate)
 			crystal_sprite.modulate = player_sprite.modulate
 			player_sprite.modulate = Color(1, 1, 1)
-			crystal.connected_color_source.show()
+			if crystal.full():
+				crystal.connected_color_source.show()
 			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
 			if !crystal.filled: 
 				GameManager.fill_crystal()
