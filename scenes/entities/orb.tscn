@@ -10,6 +10,9 @@ radius = 24.186773
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_yu4ry")
+scale_change_duration = 1.0
+position_change_speed = 10.0
+absorb_threshold = 15.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Orbs"]]
 scale = Vector2(0.25, 0.25)
