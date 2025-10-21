@@ -65,4 +65,3 @@ func _kill() -> void:
 func color_value() : 
 	print(sprite.modulate)
 	return sprite.modulate
-

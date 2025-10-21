@@ -3,42 +3,41 @@
 [ext_resource type="Script" uid="uid://d1xergo2gfk6j" path="res://src/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csbta1brs4t15" path="res://scenes/environment/world.tscn" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ndkkf25hp1t8" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="2_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://7q51iltheikm" path="res://assets/flowers.jpg" id="2_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b0yinuvhlihpv" path="res://Art/codioful-formerly-gradienta-LeG68PrXA6Y-unsplash.jpg" id="2_kvuet"]
 [ext_resource type="Script" uid="uid://daiqv4iuyfbtb" path="res://src/entities/orb.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d3ijr8orr02vw" path="res://scenes/entities/greyscale_color_filter.tscn" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b72855wnkr4bs" path="res://scenes/entities/color_source.tscn" id="4_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cx0b6y8nw56it" path="res://scenes/entities/player.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://d33d1dmtw0t7l" path="res://src/entities/spawner.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://d4lm2a4yy6nx4" path="res://scenes/entities/orb.tscn" id="6_p57ef"]
-[ext_resource type="Shader" uid="uid://b6uyc7sb67eo8" path="res://Art/Shaders & Materials/ColorScalingRecolor.gdshader" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bb6kwesuaimep" path="res://scenes/entities/crystal.tscn" id="7_u5sy4"]
 [ext_resource type="Shader" uid="uid://b6uyc7sb67eo8" path="res://Art/Shaders & Materials/ColorScalingRecolor.gdshader" id="8_kvuet"]
 [ext_resource type="Script" uid="uid://clkmewcuvujid" path="res://src/entities/crystals.gd" id="9_kvuet"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
 resource_local_to_scene = true
-shader = ExtResource("7_dinhu")
+shader = ExtResource("8_kvuet")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
 resource_local_to_scene = true
-shader = ExtResource("7_dinhu")
+shader = ExtResource("8_kvuet")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ir15t"]
 resource_local_to_scene = true
-shader = ExtResource("7_dinhu")
+shader = ExtResource("8_kvuet")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
 resource_local_to_scene = true
-shader = ExtResource("7_dinhu")
+shader = ExtResource("8_kvuet")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
@@ -47,7 +46,6 @@ shader_parameter/saturation = 1.0
 script = ExtResource("1_uwrxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
 texture = ExtResource("2_kvuet")
 
 [node name="World" parent="." instance=ExtResource("1_yqjtg")]
@@ -96,11 +94,6 @@ position = Vector2(1139, 613)
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_lbhrr")]
 position = Vector2(-42, -20)
 scale = Vector2(0.25, 0.25)
-default_move_dist = 100.0
-default_max_speed = 1000.0
-default_deceleration = 1.0
-default_acceleration = 4.0
-magnitude_threshold = 100.0
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]

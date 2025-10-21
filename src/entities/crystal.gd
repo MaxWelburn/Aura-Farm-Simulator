@@ -1,7 +1,6 @@
 @tool class_name Crystal extends Area2D
 
 @export var connected_color_source: Node2D
-var filled: bool = false
 @onready var req1 = %Req1
 @onready var req2 = %Req2
 

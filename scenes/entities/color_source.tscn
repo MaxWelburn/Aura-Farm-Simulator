@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b72855wnkr4bs"]
 
 [ext_resource type="Material" uid="uid://dw8w2qop0d3xi" path="res://Art/Shaders & Materials/RecolorFilter.tres" id="1_wlkf5"]
-[ext_resource type="Texture2D" uid="uid://cychuborvs8yp" path="res://assets/placeholder-circle.png" id="2_wlkf5"]
+[ext_resource type="Texture2D" uid="uid://dsrh7i3ik5nf4" path="res://Art/65328ebf6a851dfeac8bc964_blurred-circle-tiny.png" id="2_wlkf5"]
 
 [node name="ColorSource" type="Sprite2D"]
 visible = false
 material = ExtResource("1_wlkf5")
-scale = Vector2(10, 10)
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_wlkf5")
