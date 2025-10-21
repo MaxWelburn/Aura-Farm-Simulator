@@ -4,4 +4,11 @@ extends Node2D
 
 
 func _ready() -> void:
-	pass
+	get_tree().paused = false
+
+
+# doesn't reset grayscale though
+func _on_button_pressed() -> void:
+	var current_scene = get_tree().current_scene
+	GameManager.regray()
+	get_tree().reload_current_scene()
