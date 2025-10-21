@@ -8,3 +8,6 @@ func fill_crystal() -> void:
 	crystals_filled += 1
 	if crystals_filled == crystals_desired:
 		greyscale.material.set_shader_parameter("saturation", 1.0)
+
+func regray() -> void:
+	greyscale.material.set_shader_parameter("saturation", 0.0)
