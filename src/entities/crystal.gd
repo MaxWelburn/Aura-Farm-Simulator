@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 			connected_color_source.global_position = global_position
 
 # 0.3 is good threshold! 
-func are_colors_similar(color1: Color, color2: Color, threshold := 1) -> bool:
+func are_colors_similar(color1: Color, color2: Color, threshold := 0.3) -> bool:
 	var dr = color1.r - color2.r
 	var dg = color1.g - color2.g
 	var db = color1.b - color2.b
