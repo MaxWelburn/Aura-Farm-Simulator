@@ -7,14 +7,12 @@
 radius = 98.12747
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08t41"]
-radius = 150.0
+radius = 355.45605
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ucweq")
-default_move_dist = 0.0
-default_max_speed = 2000.0
-default_acceleration = 20.0
-magnitude_threshold = 500.0
+default_deceleration = 1.0
+default_acceleration = 4.0
 max_camera_offset = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
