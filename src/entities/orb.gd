@@ -17,12 +17,18 @@ var _scale_tween: Tween
 
 
 func _ready() -> void:
-	var hue: float = randf()
-	var sat: float = randf_range(0.7, 1.0)
-	var val: float = randf_range(0.8, 1.0)
-	sprite.modulate = Color.from_hsv(hue, sat, val, 1.0)
-	#var color: Color = Color.from_ok_hsl(1.5, 0.85, 0.75, 1.0)
-	#var foat = color.
+	var time_now = Time.get_unix_time_from_system() # replaces OS.get_unix_time() in Godot 4
+	var seed_value = int(floor(time_now / 100000))
+	seed(seed_value)
+	randomize()
+	var colors: Array[Color] = []
+	for i in range(5):
+		var hue = float(i) / 5
+		var color = Color.from_ok_hsl(hue, 1.0, 0.75)
+		colors.append(color)
+	sprite.modulate = colors[randi() % colors.size()]
+
+
 
 
 func _process(_delta: float) -> void:

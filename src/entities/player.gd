@@ -74,7 +74,12 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		var crystal_sprite = crystal.get_node("Sprite2D")
 		if crystal_sprite and player_sprite and crystal.color_allowed(player_sprite.modulate):
 			print("Color allowed:", player_sprite.modulate)
-			crystal_sprite.modulate = player_sprite.modulate
+			var color_tween = create_tween()
+			if (crystal_sprite.modulate == Color(1, 1, 1)):
+				color_tween.tween_property(crystal_sprite, "modulate", player_sprite.modulate, 0.5)
+			else:
+				var colormixed = Color.from_ok_hsl(lerp(player_sprite.modulate.ok_hsl_h, crystal_sprite.modulate.ok_hsl_h, 0.5), crystal_sprite.modulate.ok_hsl_s, crystal_sprite.modulate.ok_hsl_l)
+				color_tween.tween_property(crystal_sprite, "modulate", colormixed, 0.5)
 			player_sprite.modulate = Color(1, 1, 1)
 			if crystal.full():
 				GameManager.fill_crystal()
@@ -90,6 +95,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 				if !child.full():
 					done = false
 		if done == true:
+			await get_tree().create_timer(1.25).timeout
 			game_over()
 
 
