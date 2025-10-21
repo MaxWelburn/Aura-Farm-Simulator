@@ -3,7 +3,6 @@ class_name Orb extends Node2D
 @export var move_speed: float = 5.0
 @export var color_change_speed: float = 5.0
 @export var scale_change_speed: float = 0.5
-
 @onready var sprite: Sprite2D = $Sprite2D
 
 var _goal_pos: Vector2
@@ -19,12 +18,20 @@ var _player_start_size: Vector2
 
 
 func _ready() -> void:
-	var hue: float = randf()
-	var sat: float = randf_range(0.7, 1.0)
-	var val: float = randf_range(0.8, 1.0)
-	sprite.modulate = Color.from_hsv(hue, sat, val, 1.0)
-	#var color: Color = Color.from_ok_hsl(1.5, 0.85, 0.75, 1.0)
-	#var foat = color.
+	var time_now = Time.get_unix_time_from_system() # replaces OS.get_unix_time() in Godot 4
+	var seed_value = int(floor(time_now / 100000))
+	seed(seed_value)
+	randomize()
+	var colors: Array[Color] = []
+	for i in range(5):
+		var hue = float(i) / 5
+		var color = Color.from_hsv(hue, 1.0, 1.0)
+		colors.append(color)
+	sprite.modulate = colors[randi() % colors.size()]
+	#var hue: float = randf()
+	#var sat: float = randf_range(0.7, 1.0)
+	#var val: float = randf_range(0.8, 1.0)
+	#sprite.modulate = Color.from_hsv(hue, sat, val, 1.0)
 
 
 func _process(delta: float) -> void:

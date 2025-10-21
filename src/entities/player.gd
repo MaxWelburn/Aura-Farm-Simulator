@@ -15,7 +15,8 @@ var _target_position: Vector2
 var _look_target: Vector2
 var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
- 
+var pickupSound = preload('res://assets/audio/PickUp.mp3')
+
 @onready var req1 = %Req1
 @onready var req2 = %Req2
 @onready var req1_2 = %Req1_2
@@ -84,6 +85,9 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 	print("detected object: ", detected_object)
 	if detected_object.is_in_group("Orbs"):
 		var orb: Orb = detected_object
+		$AudioStreamPlayer2D.stream = pickupSound
+		$AudioStreamPlayer2D.pitch_scale = randf_range(0.9, 1.1)
+		$AudioStreamPlayer2D.play()
 		orb.start_absorbtion(self)
 	elif detected_object.is_in_group("Crystal") and player_sprite.modulate != Color(1, 1, 1):
 		var crystal: Crystal = detected_object

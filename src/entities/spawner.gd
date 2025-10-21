@@ -9,11 +9,17 @@ extends Node2D
 @export var initial_area: Rect2 = Rect2(Vector2(-2000, -2000), Vector2(4000, 4000))
 var orbs: Array[Node2D] = []
 var sep2: float
+var colors: Array[Color] = []
 
 func _ready() -> void:
 	if orb_scene == null:
 		return
 	sep2 = min_orb_separation * min_orb_separation
+	randomize()
+	for i in range(5):
+		var hue = float(i) / 5.0
+		var color = Color.from_hsv(hue, 1.0, 1.0)
+		colors.append(color)
 	_seed_initial_pool()
 	set_physics_process(true)
 
@@ -60,6 +66,7 @@ func _spawn_until_full_near_player() -> void:
 
 func _spawn_one_at(p: Vector2) -> void:
 	var orb := orb_scene.instantiate()
+	#orb.get_node("Sprite2D").modulate = colors[randi() % colors.size()]
 	add_child(orb)
 	orb.global_position = p
 	orb.name = "Orb"

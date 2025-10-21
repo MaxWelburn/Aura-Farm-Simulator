@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx0b6y8nw56it"]
+[gd_scene load_steps=8 format=3 uid="uid://cx0b6y8nw56it"]
 
 [ext_resource type="Script" uid="uid://cik2b88nl48x3" path="res://src/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Texture2D" uid="uid://cychuborvs8yp" path="res://assets/placeholder-circle.png" id="2_08t41"]
+[ext_resource type="Shader" uid="uid://c6i52ug5fkv6y" path="res://scenes/entities/player.gdshader" id="2_42nxq"]
+[ext_resource type="AudioStream" uid="uid://cyfdhdxt2ha2m" path="res://assets/audio/PickUp.mp3" id="3_1ie0h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5u6hq"]
+shader = ExtResource("2_42nxq")
+shader_parameter/aura_color = Color(0.4, 0.8, 1, 1)
+shader_parameter/aura_width_px = 16.0
+shader_parameter/aura_softness = 0.6
+shader_parameter/pulse_speed = 1.5
+shader_parameter/pulse_strength = 0.6
+shader_parameter/base_intensity = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qees"]
 radius = 98.12747
@@ -11,11 +22,10 @@ radius = 355.45605
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ucweq")
-default_deceleration = 1.0
-default_acceleration = 4.0
 max_camera_offset = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
+material = SubResource("ShaderMaterial_5u6hq")
 texture = ExtResource("2_08t41")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
@@ -27,5 +37,8 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_08t41")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1ie0h")
 
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]

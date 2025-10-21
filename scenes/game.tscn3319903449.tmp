@@ -52,6 +52,9 @@ texture = ExtResource("2_kvuet")
 [node name="World" parent="." instance=ExtResource("1_yqjtg")]
 visible = false
 script = ExtResource("2_lnu2h")
+move_speed = null
+color_change_speed = null
+scale_change_speed = null
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false

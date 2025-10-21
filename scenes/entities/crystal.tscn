@@ -77,6 +77,9 @@ unique_name_in_owner = true
 position = Vector2(62, 11)
 scale = Vector2(0.40000004, 0.40000004)
 collision_layer = 0
+move_speed = null
+color_change_speed = null
+scale_change_speed = null
 
 [node name="Req2" type="Label" parent="."]
 unique_name_in_owner = true
@@ -91,3 +94,6 @@ unique_name_in_owner = true
 position = Vector2(24, 12)
 scale = Vector2(0.40000004, 0.40000004)
 collision_layer = 0
+move_speed = null
+color_change_speed = null
+scale_change_speed = null
