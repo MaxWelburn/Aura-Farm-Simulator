@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d4lm2a4yy6nx4" path="res://scenes/entities/orb.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bb6kwesuaimep" path="res://scenes/entities/crystal.tscn" id="7_u5sy4"]
 [ext_resource type="Shader" uid="uid://b6uyc7sb67eo8" path="res://Art/Shaders & Materials/ColorScalingRecolor.gdshader" id="8_kvuet"]
-[ext_resource type="Script" path="res://src/entities/crystals.gd" id="9_kvuet"]
+[ext_resource type="Script" uid="uid://clkmewcuvujid" path="res://src/entities/crystals.gd" id="9_kvuet"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
 resource_local_to_scene = true
@@ -110,93 +110,17 @@ script = ExtResource("9_kvuet")
 position = Vector2(-1127, -706)
 connected_color_source = NodePath("../../ColorSources/ColorSource")
 
-[node name="ColorsReq" type="Label" parent="Crystals/Crystal"]
-offset_left = -36.0
-offset_top = -160.0
-offset_right = 28.0
-offset_bottom = -137.0
-text = "1       1    "
-
-[node name="Req1" parent="Crystals/Crystal/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(62, 11)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
-[node name="Req2" parent="Crystals/Crystal/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(24, 12)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
 [node name="Crystal2" parent="Crystals" node_paths=PackedStringArray("connected_color_source") instance=ExtResource("7_u5sy4")]
 position = Vector2(1321, -616)
 connected_color_source = NodePath("../../ColorSources/ColorSource2")
-
-[node name="ColorsReq" type="Label" parent="Crystals/Crystal2"]
-offset_left = -36.0
-offset_top = -160.0
-offset_right = 28.0
-offset_bottom = -137.0
-text = "1       1    "
-
-[node name="Req1_2" parent="Crystals/Crystal2/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(62, 11)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
-[node name="Req2_2" parent="Crystals/Crystal2/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(24, 12)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
 
 [node name="Crystal3" parent="Crystals" node_paths=PackedStringArray("connected_color_source") instance=ExtResource("7_u5sy4")]
 position = Vector2(-1219, 706)
 connected_color_source = NodePath("../../ColorSources/ColorSource3")
 
-[node name="ColorsReq" type="Label" parent="Crystals/Crystal3"]
-offset_left = -36.0
-offset_top = -160.0
-offset_right = 28.0
-offset_bottom = -137.0
-text = "1       1    "
-
-[node name="Req1_3" parent="Crystals/Crystal3/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(62, 11)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
-[node name="Req2_3" parent="Crystals/Crystal3/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(24, 12)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
 [node name="Crystal4" parent="Crystals" node_paths=PackedStringArray("connected_color_source") instance=ExtResource("7_u5sy4")]
 position = Vector2(1139, 613)
 connected_color_source = NodePath("../../ColorSources/ColorSource4")
-
-[node name="ColorsReq" type="Label" parent="Crystals/Crystal4"]
-offset_left = -36.0
-offset_top = -160.0
-offset_right = 28.0
-offset_bottom = -137.0
-text = "1       1    "
-
-[node name="Req1_4" parent="Crystals/Crystal4/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(62, 11)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
-
-[node name="Req2_4" parent="Crystals/Crystal4/ColorsReq" instance=ExtResource("6_p57ef")]
-unique_name_in_owner = true
-position = Vector2(24, 12)
-scale = Vector2(0.40000004, 0.40000004)
-collision_layer = 0
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_iywne")
