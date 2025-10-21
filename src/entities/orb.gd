@@ -60,3 +60,9 @@ func start_absorbtion(player: CharacterBody2D) -> void:
 
 func _kill() -> void:
 	self.queue_free()
+
+
+func color_value() : 
+	print(sprite.modulate)
+	return sprite.modulate
+
