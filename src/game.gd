@@ -9,6 +9,5 @@ func _ready() -> void:
 
 # doesn't reset grayscale though
 func _on_button_pressed() -> void:
-	var current_scene = get_tree().current_scene
 	GameManager.regray()
 	get_tree().reload_current_scene()
