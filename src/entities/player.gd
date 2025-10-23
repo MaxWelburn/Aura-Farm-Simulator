@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	var ticks: int = Time.get_ticks_msec()
 	var x = ticks / 2.0
 	print(velocity.length())
-	velocity = velocity + 15 * Vector2(2*sin(x) + sin(2*x) + sin(3*x) * sin(3*x) * sin(3*x), sin(x) + sin(2*x) + sin(2*x) * sin(2*x) * sin(7*x))
+	velocity = velocity + 30 * Vector2(2*sin(x) + sin(2*x) + sin(3*x) * sin(3*x) * sin(3*x), sin(x) + sin(2*x) + sin(2*x) * sin(2*x) * sin(7*x))
 	move_and_slide()
 	
 
