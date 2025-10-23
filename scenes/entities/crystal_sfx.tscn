@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv76l7phdeb76"]
+
+[ext_resource type="AudioStream" uid="uid://b8sj10i67f1n2" path="res://assets/audio/ScaryCrystalSFX.mp3" id="1_ijgfu"]
+[ext_resource type="Script" uid="uid://qjig3syx71hr" path="res://src/sound/collect_sfx.gd" id="2_0kbvg"]
+
+[node name="Collect SFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_ijgfu")
+script = ExtResource("2_0kbvg")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

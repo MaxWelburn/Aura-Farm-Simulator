@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkqh3nn33r0sh"]
+[gd_scene load_steps=25 format=3 uid="uid://dkqh3nn33r0sh"]
 
 [ext_resource type="Script" uid="uid://d1xergo2gfk6j" path="res://src/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csbta1brs4t15" path="res://scenes/environment/world.tscn" id="1_yqjtg"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bb6kwesuaimep" path="res://scenes/entities/crystal.tscn" id="7_u5sy4"]
 [ext_resource type="Shader" uid="uid://b6uyc7sb67eo8" path="res://Art/Shaders & Materials/ColorScalingRecolor.gdshader" id="8_kvuet"]
 [ext_resource type="Script" uid="uid://clkmewcuvujid" path="res://src/entities/crystals.gd" id="9_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cv76l7phdeb76" path="res://scenes/entities/crystal_sfx.tscn" id="10_ca42v"]
+[ext_resource type="PackedScene" uid="uid://brqq5qv71cfwd" path="res://scenes/entities/crystal_mini_sfx.tscn" id="11_rysoc"]
 [ext_resource type="FontFile" uid="uid://cmnccqlxypbyw" path="res://assets/WatchingYourDemoRegular.ttf" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://bhmd6uchqxc14" path="res://scenes/h_slider.tscn" id="15_ir15t"]
 
@@ -145,6 +147,8 @@ position = Vector2(1139, 613)
 position = Vector2(-42, -20)
 scale = Vector2(0.25, 0.25)
 camera = NodePath("../Camera")
+OnCollectSFX = ExtResource("10_ca42v")
+OnCollectSFX2 = ExtResource("11_rysoc")
 
 [node name="Camera" type="Camera2D" parent="."]
 limit_left = -3600
