@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkqh3nn33r0sh"]
+[gd_scene load_steps=23 format=3 uid="uid://dkqh3nn33r0sh"]
 
 [ext_resource type="Script" uid="uid://d1xergo2gfk6j" path="res://src/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csbta1brs4t15" path="res://scenes/environment/world.tscn" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://ndkkf25hp1t8" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="2_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://42jt1rhn4myq" path="res://Art/15507193-flower-field-shot-from-above.jpg" id="2_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://b0yinuvhlihpv" path="res://Art/codioful-formerly-gradienta-LeG68PrXA6Y-unsplash.jpg" id="2_kvuet"]
 [ext_resource type="Script" uid="uid://daiqv4iuyfbtb" path="res://src/entities/orb.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d3ijr8orr02vw" path="res://scenes/entities/greyscale_color_filter.tscn" id="3_dinhu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://b6uyc7sb67eo8" path="res://Art/Shaders & Materials/ColorScalingRecolor.gdshader" id="8_kvuet"]
 [ext_resource type="Script" uid="uid://clkmewcuvujid" path="res://src/entities/crystals.gd" id="9_kvuet"]
 [ext_resource type="FontFile" uid="uid://cmnccqlxypbyw" path="res://assets/WatchingYourDemoRegular.ttf" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://bhmd6uchqxc14" path="res://scenes/h_slider.tscn" id="15_ir15t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
 resource_local_to_scene = true
@@ -229,5 +230,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_trtic")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ir15t")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ca42v")
 text = "Play Again"
+
+[node name="Volume Slider" type="CanvasLayer" parent="."]
+
+[node name="HSlider" parent="Volume Slider" instance=ExtResource("15_ir15t")]
+modulate = Color(1, 0.78, 0.95966667, 1)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

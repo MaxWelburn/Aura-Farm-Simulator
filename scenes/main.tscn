@@ -12,5 +12,6 @@ game_scene = ExtResource("2_0wfyh")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("3_sugp2")
+volume_db = -20.0
 autoplay = true
 parameters/looping = true

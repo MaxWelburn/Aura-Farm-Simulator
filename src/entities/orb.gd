@@ -15,6 +15,24 @@ var _initial_distance: float
 var _color_tween: Tween
 var _scale_tween: Tween
 
+@export var OnCollectSFX: PackedScene
+
+# Textures
+var _id: int = 0
+var _circle: Texture2D = load("res://Art/aura_circle.png")
+var _square: Texture2D = load("res://Art/aura_square.png")
+var _diamond: Texture2D = load("res://Art/aura_diamond.png")
+var _x: Texture2D = load("res://Art/aura_x.png")
+var _heart: Texture2D = load("res://Art/aura_heart.png")
+var _textures: Array[Texture2D] = [_circle, _square, _diamond, _x, _heart]
+
+var _circle_fill: Texture2D = load("res://Art/aura_circle_fill.png")
+var _square_fill: Texture2D = load("res://Art/aura_square_fill.png")
+var _diamond_fill: Texture2D = load("res://Art/aura_diamond_fill.png")
+var _x_fill: Texture2D = load("res://Art/aura_x_fill.png")
+var _heart_fill: Texture2D = load("res://Art/aura_heart_fill.png")
+var _textures_fill: Array[Texture2D] = [_circle_fill, _square_fill, _diamond_fill, _x_fill, _heart_fill]
+
 
 func _ready() -> void:
 	var time_now = Time.get_unix_time_from_system() # replaces OS.get_unix_time() in Godot 4
@@ -26,25 +44,20 @@ func _ready() -> void:
 		var hue = float(i) / 5
 		var color = Color.from_ok_hsl(hue, 0.75, 0.5)
 		colors.append(color)
-	sprite.modulate = colors[randi() % colors.size()]
-
+	_id = randi() % colors.size()
+	sprite.modulate = colors[_id]
+	sprite.texture = _textures[_id]
 
 
 
 func _process(_delta: float) -> void:
 	if _getting_absorbed:
 		if _color_tween.is_running() && _scale_tween.is_running():
-			# if position.distance_to(_player.position) > absorb_threshold:
-			# 	var time_left = color_change_duration - _color_tween.get_total_elapsed_time()
-			# 	position = lerp(position, _player.position, delta * speed);
-			# else:
-			# 	position = _player.position
 			var current_fraction_complete = _color_tween.get_total_elapsed_time() / color_change_duration
-			print(current_fraction_complete)
+			#print(current_fraction_complete)
 			var current_distance = _initial_distance * curvy.sample(1 - current_fraction_complete)
-			print(current_distance)
+			#print(current_distance)
 			global_position = _player.global_position + (position - _player.global_position).normalized() * current_distance
-			
 		else:
 			_kill() # I have been aborbed
 
@@ -56,12 +69,16 @@ func _exp_decay(a: float, b: float, decay: float, delta) -> float:
 func start_absorbtion(player: CharacterBody2D) -> void:
 	_player = player
 	_player_sprite = player.get_node("Sprite2D")
+	_player_sprite.texture = _textures_fill[_id]
 	_initial_distance = global_position.distance_to(_player.global_position)
 	_color_tween = get_tree().create_tween().bind_node(self)
 	_scale_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	_color_tween.tween_property(_player_sprite, "modulate", sprite.modulate, color_change_duration);
 	_scale_tween.tween_property(sprite, "scale", Vector2.ZERO, scale_change_duration);
 	_getting_absorbed = true
+	var SFX: AudioStreamPlayer = OnCollectSFX.instantiate()
+	get_parent().add_child(SFX)
+	SFX.play()
 
 
 func _kill() -> void:

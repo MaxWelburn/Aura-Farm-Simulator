@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://42jt1rhn4myq"
-path="res://.godot/imported/15507193-flower-field-shot-from-above.jpg-91789fd5cf342c9ea458a3f1a38552c8.ctex"
+uid="uid://153mnnqw5gth"
+path="res://.godot/imported/aura_heart_fill.png-ad596072d413ed48558951b1d29a127c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/15507193-flower-field-shot-from-above.jpg"
-dest_files=["res://.godot/imported/15507193-flower-field-shot-from-above.jpg-91789fd5cf342c9ea458a3f1a38552c8.ctex"]
+source_file="res://Art/aura_heart_fill.png"
+dest_files=["res://.godot/imported/aura_heart_fill.png-ad596072d413ed48558951b1d29a127c.ctex"]
 
 [params]
 
