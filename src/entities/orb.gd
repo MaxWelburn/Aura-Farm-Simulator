@@ -24,7 +24,7 @@ func _ready() -> void:
 	var colors: Array[Color] = []
 	for i in range(5):
 		var hue = float(i) / 5
-		var color = Color.from_ok_hsl(hue, 1.0, 0.75)
+		var color = Color.from_ok_hsl(hue, 0.75, 0.5)
 		colors.append(color)
 	sprite.modulate = colors[randi() % colors.size()]
 

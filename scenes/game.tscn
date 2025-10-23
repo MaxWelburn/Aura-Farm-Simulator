@@ -94,6 +94,7 @@ expand_margin_bottom = 21.0
 script = ExtResource("1_uwrxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.5921569, 0, 0, 1)
 texture = ExtResource("2_kvuet")
 
 [node name="World" parent="." instance=ExtResource("1_yqjtg")]

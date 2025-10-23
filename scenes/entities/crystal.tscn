@@ -57,6 +57,7 @@ color = Color(1, 1, 1, 1)
 shape = SubResource("CapsuleShape2D_3ycm8")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.75686276, 0, 0, 0.6156863)
 show_behind_parent = true
 amount = 16
 texture = ExtResource("3_yfjm2")
