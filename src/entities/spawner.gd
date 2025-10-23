@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 
 func _seed_initial_pool() -> void:
 	var attempts := 0
-	var need: int = maxi(0, max_orbs - orbs.size())
+	# var need: int = maxi(0, max_orbs - orbs.size())
 	while orbs.size() < max_orbs and attempts < max_orbs * max_spawn_attempts:
 		attempts += 1
 		var p := _random_point_in_rect(initial_area)

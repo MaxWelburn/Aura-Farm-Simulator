@@ -8,9 +8,9 @@ func fill_crystal() -> void:
 	crystals_filled += 1
 	if crystals_filled == crystals_desired:
 		var sat_tween = create_tween()
-		sat_tween.tween_property(greyscale, "material:shader_param/saturation", 1.0, 0.5)
+		sat_tween.tween_property(greyscale, "material:shader_parameter/saturation", 1.0, 0.5)
 		var bright_tween = create_tween()
-		bright_tween.tween_property(greyscale, "material:shader_param/brightness", 1.0, 0.5)
+		bright_tween.tween_property(greyscale, "material:shader_parameter/brightness", 1.0, 0.5)
 
 func regray() -> void:
 	greyscale.material.set_shader_parameter("saturation", 0.0)
