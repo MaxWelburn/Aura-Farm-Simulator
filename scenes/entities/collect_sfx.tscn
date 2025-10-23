@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l26xtkrrgbot"]
 
 [ext_resource type="Script" uid="uid://qjig3syx71hr" path="res://src/sound/collect_sfx.gd" id="1_4fo3k"]
-[ext_resource type="AudioStream" uid="uid://b4hvsslkxew5c" path="res://assets/audio/iainmccurdy_large-wind-chime-2_fadein.mp3" id="1_5bgc7"]
+[ext_resource type="AudioStream" uid="uid://br2ju0bgvwqda" path="res://assets/audio/PickUp.mp3" id="1_5bgc7"]
 
 [node name="Collect SFX" type="AudioStreamPlayer"]
 stream = ExtResource("1_5bgc7")
