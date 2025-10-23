@@ -15,6 +15,7 @@ var _target_position: Vector2
 var _look_target: Vector2
 var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
+var _sprite: Sprite2D
 
 
 func _process(delta: float) -> void:
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	_target_position = mouse_position
 	_look_target = mouse_position
 	_camera_target = self
+	_sprite = $Sprite2D
 	_look_at_target(delta)
 	_move_to_target(delta)
 	move_and_slide()
@@ -43,6 +45,7 @@ func _look_at_target(delta: float) -> void:
 		turn_speed * delta
 	)
 	rotation = target_rotation
+	_sprite.rotation = -target_rotation
 
 
 func _move_to_target(delta: float) -> void:

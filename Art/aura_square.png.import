@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nlpy5ui4e1hw"
-path="res://.godot/imported/light.png-a13d6b52081ecfd017a8232cedd81304.ctex"
+uid="uid://c57dp3gwp1sf4"
+path="res://.godot/imported/aura_square.png-ff2053a9101ad375bdc65631241111d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/light.png"
-dest_files=["res://.godot/imported/light.png-a13d6b52081ecfd017a8232cedd81304.ctex"]
+source_file="res://Art/aura_square.png"
+dest_files=["res://.godot/imported/aura_square.png-ff2053a9101ad375bdc65631241111d7.ctex"]
 
 [params]
 

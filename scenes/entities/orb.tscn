@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4lm2a4yy6nx4"]
 
 [ext_resource type="Script" uid="uid://daiqv4iuyfbtb" path="res://src/entities/orb.gd" id="1_yu4ry"]
-[ext_resource type="Texture2D" uid="uid://dsrh7i3ik5nf4" path="res://Art/65328ebf6a851dfeac8bc964_blurred-circle-tiny.png" id="2_yu4ry"]
+[ext_resource type="Texture2D" uid="uid://l04pjrfuyu8k" path="res://Art/aura_circle.png" id="2_yu4ry"]
 
 [sub_resource type="Curve" id="Curve_yu4ry"]
 _data = [Vector2(0, 0), 0.0, 0.2324545, 0, 0, Vector2(1, 1), 3.3207843, 0.0, 0, 0]
