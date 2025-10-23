@@ -18,12 +18,20 @@ var _scale_tween: Tween
 @export var OnCollectSFX: PackedScene
 
 # Textures
+var _id: int = 0
 var _circle: Texture2D = load("res://Art/aura_circle.png")
 var _square: Texture2D = load("res://Art/aura_square.png")
 var _diamond: Texture2D = load("res://Art/aura_diamond.png")
 var _x: Texture2D = load("res://Art/aura_x.png")
 var _heart: Texture2D = load("res://Art/aura_heart.png")
 var _textures: Array[Texture2D] = [_circle, _square, _diamond, _x, _heart]
+
+var _circle_fill: Texture2D = load("res://Art/aura_circle_fill.png")
+var _square_fill: Texture2D = load("res://Art/aura_square_fill.png")
+var _diamond_fill: Texture2D = load("res://Art/aura_diamond_fill.png")
+var _x_fill: Texture2D = load("res://Art/aura_x_fill.png")
+var _heart_fill: Texture2D = load("res://Art/aura_heart_fill.png")
+var _textures_fill: Array[Texture2D] = [_circle_fill, _square_fill, _diamond_fill, _x_fill, _heart_fill]
 
 
 func _ready() -> void:
@@ -36,10 +44,9 @@ func _ready() -> void:
 		var hue = float(i) / 5
 		var color = Color.from_ok_hsl(hue, 1.0, 0.75)
 		colors.append(color)
-	var index = randi() % colors.size()
-	sprite.modulate = colors[index]
-	sprite.texture = _textures[index]
-
+	_id = randi() % colors.size()
+	sprite.modulate = colors[_id]
+	sprite.texture = _textures[_id]
 
 
 
@@ -62,7 +69,7 @@ func _exp_decay(a: float, b: float, decay: float, delta) -> float:
 func start_absorbtion(player: CharacterBody2D) -> void:
 	_player = player
 	_player_sprite = player.get_node("Sprite2D")
-	_player_sprite.texture = sprite.texture
+	_player_sprite.texture = _textures_fill[_id]
 	_initial_distance = global_position.distance_to(_player.global_position)
 	_color_tween = get_tree().create_tween().bind_node(self)
 	_scale_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
