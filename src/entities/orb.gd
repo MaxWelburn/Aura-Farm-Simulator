@@ -15,6 +15,8 @@ var _initial_distance: float
 var _color_tween: Tween
 var _scale_tween: Tween
 
+@export var OnCollectSFX: PackedScene
+
 # Textures
 var _circle: Texture2D = load("res://Art/aura_circle.png")
 var _square: Texture2D = load("res://Art/aura_square.png")
@@ -67,6 +69,9 @@ func start_absorbtion(player: CharacterBody2D) -> void:
 	_color_tween.tween_property(_player_sprite, "modulate", sprite.modulate, color_change_duration);
 	_scale_tween.tween_property(sprite, "scale", Vector2.ZERO, scale_change_duration);
 	_getting_absorbed = true
+	var SFX: AudioStreamPlayer = OnCollectSFX.instantiate()
+	get_parent().add_child(SFX)
+	SFX.play()
 
 
 func _kill() -> void:
