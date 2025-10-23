@@ -15,6 +15,14 @@ var _initial_distance: float
 var _color_tween: Tween
 var _scale_tween: Tween
 
+# Textures
+var _circle: Texture2D = load("res://Art/aura_circle.png")
+var _square: Texture2D = load("res://Art/aura_square.png")
+var _diamond: Texture2D = load("res://Art/aura_diamond.png")
+var _x: Texture2D = load("res://Art/aura_x.png")
+var _heart: Texture2D = load("res://Art/aura_heart.png")
+var _textures: Array[Texture2D] = [_circle, _square, _diamond, _x, _heart]
+
 
 func _ready() -> void:
 	var time_now = Time.get_unix_time_from_system() # replaces OS.get_unix_time() in Godot 4
@@ -26,7 +34,9 @@ func _ready() -> void:
 		var hue = float(i) / 5
 		var color = Color.from_ok_hsl(hue, 1.0, 0.75)
 		colors.append(color)
-	sprite.modulate = colors[randi() % colors.size()]
+	var index = randi() % colors.size()
+	sprite.modulate = colors[index]
+	sprite.texture = _textures[index]
 
 
 
@@ -34,15 +44,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if _getting_absorbed:
 		if _color_tween.is_running() && _scale_tween.is_running():
-			# if position.distance_to(_player.position) > absorb_threshold:
-			# 	var time_left = color_change_duration - _color_tween.get_total_elapsed_time()
-			# 	position = lerp(position, _player.position, delta * speed);
-			# else:
-			# 	position = _player.position
 			var current_fraction_complete = _color_tween.get_total_elapsed_time() / color_change_duration
-			print(current_fraction_complete)
+			#print(current_fraction_complete)
 			var current_distance = _initial_distance * curvy.sample(1 - current_fraction_complete)
-			print(current_distance)
+			#print(current_distance)
 			global_position = _player.global_position + (position - _player.global_position).normalized() * current_distance
 			
 		else:
