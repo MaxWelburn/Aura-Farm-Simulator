@@ -17,6 +17,8 @@ var _camera_target: CharacterBody2D
 var _camera_offset: Vector2
 var _sprite: Sprite2D
 
+var _plain_texture: Texture2D = load("res://Art/65328ebf6a851dfeac8bc964_blurred-circle-tiny.png")
+
 
 func _process(delta: float) -> void:
 	_update_camera(delta)
@@ -45,7 +47,7 @@ func _look_at_target(delta: float) -> void:
 		turn_speed * delta
 	)
 	rotation = target_rotation
-	_sprite.rotation = -target_rotation
+	_sprite.rotation = -target_rotation # lol
 
 
 func _move_to_target(delta: float) -> void:
@@ -84,6 +86,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 				var colormixed = Color.from_ok_hsl(lerp(player_sprite.modulate.ok_hsl_h, crystal_sprite.modulate.ok_hsl_h, 0.5), crystal_sprite.modulate.ok_hsl_s, crystal_sprite.modulate.ok_hsl_l)
 				color_tween.tween_property(crystal_sprite, "modulate", colormixed, 0.5)
 			player_sprite.modulate = Color(1, 1, 1)
+			player_sprite.texture = _plain_texture
 			if crystal.full():
 				GameManager.fill_crystal()
 				crystal.connected_color_source.show()
