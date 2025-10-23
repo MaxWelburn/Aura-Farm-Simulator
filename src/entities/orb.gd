@@ -49,7 +49,6 @@ func _process(_delta: float) -> void:
 			var current_distance = _initial_distance * curvy.sample(1 - current_fraction_complete)
 			#print(current_distance)
 			global_position = _player.global_position + (position - _player.global_position).normalized() * current_distance
-			
 		else:
 			_kill() # I have been aborbed
 
@@ -61,6 +60,7 @@ func _exp_decay(a: float, b: float, decay: float, delta) -> float:
 func start_absorbtion(player: CharacterBody2D) -> void:
 	_player = player
 	_player_sprite = player.get_node("Sprite2D")
+	_player_sprite.texture = sprite.texture
 	_initial_distance = global_position.distance_to(_player.global_position)
 	_color_tween = get_tree().create_tween().bind_node(self)
 	_scale_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
