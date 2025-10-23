@@ -10,6 +10,8 @@ class_name Player extends CharacterBody2D
 @export var max_camera_offset: float = 200.0
 @export var camera: Camera2D
 @export var currentColor: Color
+@export var OnCollectSFX: PackedScene
+@export var OnCollectSFX2: PackedScene
 
 var _target_position: Vector2
 var _look_target: Vector2
@@ -83,11 +85,20 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		if crystal_sprite and _sprite and crystal.color_allowed(_sprite.modulate):
 			print("Color allowed:", _sprite.modulate)
 			_fade_colors(crystal_sprite)
+			var SFX2: AudioStreamPlayer = OnCollectSFX2.instantiate()
+			get_parent().add_child(SFX2)
+			SFX2.pitch_scale = randf_range(0.6, 0.8)
+			SFX2.play()
 			if crystal.full():
+				var SFX: AudioStreamPlayer = OnCollectSFX.instantiate()
+				get_parent().add_child(SFX)
+				SFX.pitch_scale = randf_range(0.8, 0.95)
 				GameManager.fill_crystal()
 				crystal.connected_color_source.show()
 				var expansion_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 				expansion_tween.tween_property(crystal.connected_color_source, "scale", Vector2.ONE * 10.0, 5.0)
+				await get_tree().create_timer(1.0).timeout
+				SFX.play()
 			# [OLD, kept in case it comes in handy later for something like scaling saturation slowly] crystal.connected_color_source.material.set_shader_parameter("saturation", 1.0)
 		var crystals = get_parent().get_node("Crystals")
 		var done = true
